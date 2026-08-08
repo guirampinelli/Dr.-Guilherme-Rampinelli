@@ -109,6 +109,20 @@
   text-transform: uppercase;
 }
 
+.article-byline {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.article-byline a {
+  color: var(--green);
+  text-decoration: underline;
+  text-decoration-color: rgba(155, 135, 92, 0.7);
+  text-underline-offset: 3px;
+}
+
 .content-hero h1,
 .article-hero h1 {
   max-width: 790px;

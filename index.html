@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Teleconsulta particular com o Dr. Guilherme Rampinelli, médico clínico geral. Atendimento online para adultos, R$ 70, agendamento pela Doctoralia."
+      content="Teleconsulta com clínico geral para adultos em todo o Brasil. Atendimento online particular com o Dr. Guilherme Rampinelli, CRM-SP 281096, com agendamento pela Doctoralia."
     />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#23433B" />
     <link rel="canonical" href="https://drrampinelli.com.br/" />
     <link rel="icon" href="assets/gr-monograma.svg" type="image/svg+xml" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dr. Guilherme Rampinelli" />
+    <meta property="og:title" content="Teleconsulta com clínico geral | Dr. Guilherme Rampinelli" />
+    <meta property="og:description" content="Atendimento médico online para adultos, com escuta cuidadosa e próximos passos objetivos." />
+    <meta property="og:url" content="https://drrampinelli.com.br/" />
+    <meta property="og:image" content="https://drrampinelli.com.br/assets/og-teleconsulta.png" />
+    <meta property="og:image:alt" content="Teleconsulta médica online com o Dr. Guilherme Rampinelli" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Teleconsulta com clínico geral | Dr. Guilherme Rampinelli" />
+    <meta name="twitter:description" content="Atendimento médico online para adultos, com escuta cuidadosa e próximos passos objetivos." />
+    <meta name="twitter:image" content="https://drrampinelli.com.br/assets/og-teleconsulta.png" />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://www.doctoralia.com.br" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +31,7 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>Dr. Guilherme Rampinelli | Teleconsulta médica online</title>
+    <title>Teleconsulta com clínico geral | Dr. Guilherme Rampinelli</title>
     <link rel="stylesheet" href="styles.css" />
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -40,19 +53,62 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Physician",
-        "name": "Dr. Guilherme Rampinelli",
-        "medicalSpecialty": "PrimaryCare",
-        "priceRange": "R$ 70",
-        "image": "https://drrampinelli.com.br/assets/dr-guilherme-profile.jpg",
-        "url": "https://drrampinelli.com.br/",
-        "sameAs": [
-          "https://www.doctoralia.com.br/guilherme-rampinelli/medico-clinico-geral/sao-paulo"
-        ],
-        "areaServed": {
-          "@type": "Country",
-          "name": "Brasil"
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://drrampinelli.com.br/#website",
+            "url": "https://drrampinelli.com.br/",
+            "name": "Dr. Guilherme Rampinelli",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://drrampinelli.com.br/#dr-guilherme-rampinelli" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://drrampinelli.com.br/#webpage",
+            "url": "https://drrampinelli.com.br/",
+            "name": "Teleconsulta com clínico geral | Dr. Guilherme Rampinelli",
+            "description": "Teleconsulta com clínico geral para adultos em todo o Brasil.",
+            "inLanguage": "pt-BR",
+            "isPartOf": { "@id": "https://drrampinelli.com.br/#website" },
+            "about": { "@id": "https://drrampinelli.com.br/#dr-guilherme-rampinelli" }
+          },
+          {
+            "@type": ["Physician", "Person"],
+            "@id": "https://drrampinelli.com.br/#dr-guilherme-rampinelli",
+            "name": "Dr. Guilherme Rampinelli",
+            "jobTitle": "Médico clínico geral",
+            "medicalSpecialty": "PrimaryCare",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "CRM-SP",
+              "value": "281096"
+            },
+            "image": "https://drrampinelli.com.br/assets/dr-guilherme-profile.jpg",
+            "url": "https://drrampinelli.com.br/",
+            "sameAs": [
+              "https://www.doctoralia.com.br/guilherme-rampinelli/medico-clinico-geral/sao-paulo"
+            ],
+            "areaServed": {
+              "@type": "Country",
+              "name": "Brasil"
+            },
+            "knowsLanguage": "pt-BR",
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Universidade Nove de Julho"
+            },
+            "makesOffer": {
+              "@type": "Offer",
+              "price": "70",
+              "priceCurrency": "BRL",
+              "availability": "https://schema.org/InStock",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Teleconsulta de clínica médica para adultos"
+              }
+            }
+          }
+        ]
       }
     </script>
   </head>
@@ -97,9 +153,7 @@
       <div class="hero-inner" id="topo">
         <div class="hero-copy">
           <p class="eyebrow">Clínica médica online</p>
-          <h1 id="hero-title">
-            Orientação médica com <span>clareza</span> para cuidar melhor.
-          </h1>
+          <h1 id="hero-title">Teleconsulta com <span>clínico geral</span> para adultos.</h1>
           <p class="hero-lede">
             Teleconsulta particular para adultos, com escuta cuidadosa, explicação acessível
             e próximos passos objetivos para a sua saúde.
@@ -129,6 +183,9 @@
             <img
               src="assets/dr-guilherme-profile.jpg"
               alt="Dr. Guilherme Rampinelli"
+              width="1280"
+              height="1280"
+              fetchpriority="high"
               loading="eager"
             />
 

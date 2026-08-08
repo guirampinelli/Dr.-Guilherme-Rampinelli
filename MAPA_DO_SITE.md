@@ -13,6 +13,7 @@ _Verificado em 8 de agosto de 2026._
 | Interações e rastreamento | JavaScript no navegador | `script.js` |
 | Imagens e logos | Arquivos locais, sem CDN próprio | `assets/` |
 | Conteúdos educativos | Índice e artigos estáticos | `conteudos/` e `conteudos.css` |
+| SEO e descoberta | Metadados, dados estruturados, sitemap e robots | HTML, `sitemap.xml` e `robots.txt` |
 | Agendamento | Links externos da Doctoralia | URLs com `doctoralia.com.br` em `index.html` |
 | Métricas | Google Tag Manager `GTM-P64PFJRP` | `index.html` e `script.js` |
 
@@ -26,6 +27,8 @@ landing-page-premium/
 ├── styles.css       cores, layout, responsividade e animações
 ├── script.js        UTMs, cliques na Doctoralia e eventos do GTM
 ├── conteudos.css     visual compartilhado da área de conteúdos
+├── robots.txt        orientação de rastreamento e link do sitemap
+├── sitemap.xml       lista das URLs que podem aparecer na busca
 ├── conteudos/
 │   ├── index.html    índice de publicações
 │   └── colesterol-alto/
@@ -34,7 +37,8 @@ landing-page-premium/
 │   ├── dr-guilherme-profile.jpg
 │   ├── gr-monograma.svg
 │   ├── logo-horizontal.svg
-│   └── logo-horizontal-transparent.svg
+│   ├── logo-horizontal-transparent.svg
+│   └── og-teleconsulta.png
 ├── README.md        resumo técnico já existente
 └── MAPA_DO_SITE.md  este guia
 ```
@@ -43,7 +47,7 @@ landing-page-premium/
 
 | O que mudar | Arquivo | Referências atuais |
 | --- | --- | --- |
-| Título, descrição Google e endereço canônico | `index.html` | linhas 7–12 e 20 |
+| Título, descrição, cartão de compartilhamento e endereço canônico | `<head>` de cada `index.html` | procure `description`, `canonical` e `og:` |
 | Texto da capa | `index.html` | linhas 97–123 |
 | Valor da consulta | `index.html` e `script.js` | procurar `R$ 70` e `lead_value: 70` / `value: 70` |
 | Número de opiniões | `index.html` | procurar `60 opiniões` |
@@ -54,10 +58,11 @@ landing-page-premium/
 | Cores, fontes, espaçamentos e visual | `styles.css` | variáveis no início do arquivo |
 | Eventos de conversão/UTMs | `script.js` | `doctoralia_click` e `generate_lead` |
 | Publicar um novo texto | `conteudos/` | crie uma nova pasta com `index.html` e adicione o cartão em `conteudos/index.html` |
+| URLs enviadas aos buscadores | `sitemap.xml` | inclua cada nova página pública com uma data de atualização correta |
 
 ## Cuidados ao alterar
 
-- Se o valor da consulta mudar, atualize todas as ocorrências de `R$ 70`, o `priceRange` do schema e os valores numéricos `70` em `script.js`; assim, o texto, o SEO e as métricas continuam coerentes.
+- Se o valor da consulta mudar, atualize todas as ocorrências de `R$ 70`, o valor da oferta no schema e os valores numéricos `70` em `script.js`; assim, o texto, o SEO e as métricas continuam coerentes.
 - Ao trocar a URL da Doctoralia, atualize todos os links com `data-doctoralia-link="true"`. O JavaScript preserva as UTMs e os identificadores de campanha desses links.
 - Mantenha `assets/` ao lado de `index.html`; os caminhos das imagens são relativos.
 - Só altere o ID `GTM-P64PFJRP` se houver outro contêiner GTM configurado.
@@ -74,16 +79,16 @@ A página em produção está respondendo normalmente (`HTTP 200`) e passa pelo 
 | Serviço | `Guilherme` (`2078503e-623b-4a42-8589-918fbc022eb5`) |
 | Ambiente | `production` (`f3ceb5be-16e9-4300-a440-ec03e4a7b797`) |
 | Domínio público | `drrampinelli.com.br` |
-| Repositório de origem | GitHub: `lmvlr/guilherme` |
+| Repositório de origem | GitHub: `guirampinelli/Dr.-Guilherme-Rampinelli` |
 | Branch publicada | `main` |
 | Método de build | Railpack, sem comando de build, start ou diretório raiz personalizados |
-| Último deploy confirmado | `SUCCESS`, iniciado em 3 de julho de 2026 às 19:33 UTC |
+| Último deploy confirmado | `SUCCESS`, em 8 de agosto de 2026 |
 
 O token é limitado ao workspace LUMMEN. Ele não deve ser colocado no repositório GitHub, em arquivos do site, nem em mensagens. Para automações futuras, mantenha-o fora do projeto e use o cabeçalho `Authorization: Bearer ...`.
 
 ## Fluxo recomendado para uma alteração simples
 
-1. Faça a alteração no repositório GitHub `lmvlr/guilherme`, branch `main`. A pasta local `landing-page-premium/` é uma cópia de trabalho e não está conectada a esse remoto.
+1. Faça a alteração nesta pasta, conectada ao repositório GitHub `guirampinelli/Dr.-Guilherme-Rampinelli`, branch `main`.
 2. Abra `index.html` localmente no navegador e valide a alteração antes do envio.
 3. Envie o commit à branch `main`. O Railway inicia o deploy automaticamente pelo Railpack.
 4. Aguarde o estado `SUCCESS` no serviço **Guilherme** do ambiente **production**.

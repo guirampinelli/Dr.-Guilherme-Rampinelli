@@ -13,10 +13,13 @@ educativos em rotas proprias.
 - `assets/`: monograma, logo horizontal com fundo, logo horizontal transparente e foto usada na pagina.
 - `conteudos/`: pagina de publicacoes e artigos educativos.
 - `conteudos.css`: estilos compartilhados da area de conteudos.
+- `robots.txt` e `sitemap.xml`: arquivos de descoberta para mecanismos de busca.
 
 ## Publicacao
 
 Suba o conteudo desta pasta para a raiz do dominio, mantendo a pasta `assets` no mesmo nivel de `index.html`.
+
+O `Dockerfile` ja inclui `robots.txt`, `sitemap.xml` e todos os arquivos da pasta `assets/` na imagem publicada.
 
 O GTM atual foi preservado: `GTM-P64PFJRP`.
 
@@ -28,6 +31,9 @@ O GTM atual foi preservado: `GTM-P64PFJRP`.
 - Variante de rastreamento: procure por `premium_identity_doctoralia_v1`.
 - Conteudos publicados: abra `conteudos/index.html`. O primeiro artigo esta em
   `conteudos/colesterol-alto/index.html`.
+- URLs indexaveis: atualize `sitemap.xml` ao publicar uma nova pagina ou artigo.
+- Imagem de compartilhamento: `assets/og-teleconsulta.png` e as meta tags Open Graph/Twitter
+  de cada pagina.
 
 ## Observacao medica
 
