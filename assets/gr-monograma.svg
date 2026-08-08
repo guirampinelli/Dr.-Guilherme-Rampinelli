@@ -1,0 +1,10 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Monograma GR - Dr. Guilherme Rampinelli</title>
+  <rect width="1080" height="1080" fill="#F4EFE7"/>
+  <circle cx="540" cy="540" r="354" fill="#23433B"/>
+  <circle cx="540" cy="540" r="354" stroke="#BFAE82" stroke-width="8"/>
+  <circle cx="540" cy="540" r="300" stroke="#BFAE82" stroke-width="2" opacity="0.16"/>
+  <text x="324" y="602" font-family="Georgia" font-size="356" font-weight="400" fill="#BFAE82">G</text>
+  <text x="518" y="707" font-family="Georgia" font-size="292" font-weight="400" fill="#BFAE82">R</text>
+  <path d="M398 735C496 687 606 692 694 735" stroke="#BFAE82" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+</svg>
