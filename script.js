@@ -28,9 +28,9 @@
   });
 
   try {
-    if (Object.keys(attribution).length > 0) {
+    if (window.__drAnalyticsConsent === "granted" && Object.keys(attribution).length > 0) {
       window.localStorage.setItem(storageKey, JSON.stringify(attribution));
-    } else {
+    } else if (window.__drAnalyticsConsent === "granted") {
       attribution = JSON.parse(window.localStorage.getItem(storageKey) || "{}");
     }
   } catch (error) {
@@ -38,39 +38,28 @@
   }
 
   window.__drAttribution = attribution;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "landing_context",
-    page_type: pageType,
-    page_variant: pageVariant,
-    landing_url: getLandingUrl(),
-    landing_path: getLandingPath(),
-    lead_value: leadValue,
-    currency: "BRL",
-    attribution_utm_source: attribution.utm_source || "",
-    attribution_utm_medium: attribution.utm_medium || "",
-    attribution_utm_campaign: attribution.utm_campaign || "",
-    attribution_utm_term: attribution.utm_term || "",
-    attribution_utm_content: attribution.utm_content || "",
-    attribution_utm_id: attribution.utm_id || "",
-    attribution_gclid: attribution.gclid || "",
-    attribution_wbraid: attribution.wbraid || "",
-    attribution_gbraid: attribution.gbraid || "",
-    attribution_gad_source: attribution.gad_source || ""
-  });
+  function trackEvent(eventName, payload) {
+    if (window.__drAnalyticsConsent !== "granted" || typeof window.gtag !== "function") return;
+    window.gtag("event", eventName, payload);
+  }
+
+  function trackLandingContext() {
+    trackEvent("landing_context", {
+      page_type: pageType,
+      page_variant: pageVariant,
+      landing_path: getLandingPath()
+    });
+  }
 
   function getLandingPath() {
     if (window.location.protocol === "file:") return "/";
     return window.location.pathname || "/";
   }
 
-  function getLandingUrl() {
-    if (window.location.protocol === "file:") return "https://drrampinelli.com.br/";
-    return window.location.href;
-  }
-
   function decorateHref(rawHref) {
     var url = new URL(rawHref, window.location.origin);
+
+    if (window.__drAnalyticsConsent !== "granted") return url.toString();
 
     passthroughKeys.forEach(function (key) {
       if (attribution[key]) url.searchParams.set(key, attribution[key]);
@@ -88,9 +77,7 @@
     return ["drg", location || "cta", Date.now(), Math.random().toString(36).slice(2, 10)].join("_");
   }
 
-  function buildLeadPayload(link, finalHref, eventId) {
-    var linkText = (link.textContent || "").trim();
-
+  function buildLeadPayload(link, eventId) {
     return {
       page_type: pageType,
       page_variant: pageVariant,
@@ -100,22 +87,7 @@
       value: leadValue,
       currency: "BRL",
       cta_location: link.dataset.ctaLocation || "unknown",
-      cta_text: linkText,
-      destination_url: finalHref,
-      link_url: finalHref,
-      link_text: linkText,
-      landing_url: getLandingUrl(),
-      landing_path: getLandingPath(),
-      attribution_utm_source: attribution.utm_source || "",
-      attribution_utm_medium: attribution.utm_medium || "",
-      attribution_utm_campaign: attribution.utm_campaign || "",
-      attribution_utm_term: attribution.utm_term || "",
-      attribution_utm_content: attribution.utm_content || "",
-      attribution_utm_id: attribution.utm_id || "",
-      attribution_gclid: attribution.gclid || "",
-      attribution_wbraid: attribution.wbraid || "",
-      attribution_gbraid: attribution.gbraid || "",
-      attribution_gad_source: attribution.gad_source || ""
+      landing_path: getLandingPath()
     };
   }
 
@@ -130,16 +102,40 @@
   var doctoraliaSelector = 'a[data-doctoralia-link="true"]';
   document.querySelectorAll(doctoraliaSelector).forEach(prepareDoctoraliaLink);
 
+  if (window.__drAnalyticsReady) {
+    trackLandingContext();
+  } else {
+    document.addEventListener("drg:analytics-ready", trackLandingContext, { once: true });
+  }
+
+  document.addEventListener("drg:consent-change", function () {
+    if (window.__drAnalyticsConsent !== "granted") {
+      document.querySelectorAll(doctoraliaSelector).forEach(function (link) {
+        var baseHref = link.getAttribute("data-base-href");
+        if (baseHref) link.setAttribute("href", baseHref);
+      });
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(attribution));
+    } catch (error) {
+      // A atribuição segue disponível apenas durante esta visita.
+    }
+
+    document.querySelectorAll(doctoraliaSelector).forEach(prepareDoctoraliaLink);
+  });
+
   document.addEventListener("click", function (event) {
     var link = event.target && event.target.closest ? event.target.closest(doctoraliaSelector) : null;
     if (!link) return;
 
     var finalHref = decorateHref(link.getAttribute("data-base-href") || link.href);
-    var leadPayload = buildLeadPayload(link, finalHref, makeEventId(link.dataset.ctaLocation));
+    var leadPayload = buildLeadPayload(link, makeEventId(link.dataset.ctaLocation));
 
     link.setAttribute("href", finalHref);
-    window.dataLayer.push(Object.assign({ event: "doctoralia_click" }, leadPayload));
-    window.dataLayer.push(Object.assign({ event: "generate_lead" }, leadPayload));
+    trackEvent("doctoralia_click", leadPayload);
+    trackEvent("generate_lead", leadPayload);
   });
 
   var revealItems = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));

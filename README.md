@@ -9,9 +9,11 @@ educativos em rotas proprias.
 
 - `index.html`: estrutura, conteudo, SEO, schema e links da Doctoralia.
 - `styles.css`: identidade visual, responsividade e layout.
-- `script.js`: captura de UTMs, decoracao dos links da Doctoralia e eventos para GTM/dataLayer.
+- `analytics.js`: consentimento de medicao e carregamento do Google Analytics 4.
+- `script.js`: captura de atribuicao com consentimento, decoracao dos links da Doctoralia e eventos do GA4.
 - `assets/`: monograma, logo horizontal com fundo, logo horizontal transparente e foto usada na pagina.
 - `conteudos/`: pagina de publicacoes e artigos educativos.
+- `privacidade/`: aviso de privacidade e controle da preferencia de cookies.
 - `conteudos.css`: estilos compartilhados da area de conteudos.
 - `robots.txt` e `sitemap.xml`: arquivos de descoberta para mecanismos de busca.
 
@@ -19,9 +21,9 @@ educativos em rotas proprias.
 
 Suba o conteudo desta pasta para a raiz do dominio, mantendo a pasta `assets` no mesmo nivel de `index.html`.
 
-O `Dockerfile` ja inclui `robots.txt`, `sitemap.xml` e todos os arquivos da pasta `assets/` na imagem publicada.
+O `Dockerfile` ja inclui `robots.txt`, `sitemap.xml`, `analytics.js`, a pagina de privacidade e todos os arquivos da pasta `assets/` na imagem publicada.
 
-O GTM atual foi preservado: `GTM-P64PFJRP`.
+O Google Analytics 4 usa o ID `G-N3GMLBFNRH` e so e carregado depois do aceite do visitante. Os recursos de publicidade e personalizacao permanecem desativados.
 
 ## Pontos faceis de atualizar
 
