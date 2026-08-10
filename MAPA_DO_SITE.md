@@ -1,6 +1,6 @@
 # Mapa do site — Dr. Guilherme Rampinelli
 
-_Verificado em 8 de agosto de 2026._
+_Verificado em 9 de agosto de 2026._
 
 ## Visão geral
 
@@ -15,7 +15,7 @@ _Verificado em 8 de agosto de 2026._
 | Conteúdos educativos | Índice e artigos estáticos | `conteudos/` e `conteudos.css` |
 | SEO e descoberta | Metadados, dados estruturados, sitemap e robots | HTML, `sitemap.xml` e `robots.txt` |
 | Agendamento | Links externos da Doctoralia | URLs com `doctoralia.com.br` em `index.html` |
-| Métricas | Google Tag Manager `GTM-P64PFJRP` | `index.html` e `script.js` |
+| Métricas | Google Analytics 4 `G-N3GMLBFNRH`, carregado após consentimento | `analytics.js` e `script.js` |
 
 O site não tem banco de dados, painel administrativo ou API própria: é uma página estática. As alterações de texto, valor, foto, logo e links são feitas diretamente nos arquivos acima.
 
@@ -29,16 +29,23 @@ landing-page-premium/
 ├── conteudos.css     visual compartilhado da área de conteúdos
 ├── robots.txt        orientação de rastreamento e link do sitemap
 ├── sitemap.xml       lista das URLs que podem aparecer na busca
+├── consulta-medica-online/
+│   └── index.html    página de serviço para buscas de alta intenção
+├── sobre/
+│   └── index.html    perfil profissional e autoria médica
 ├── conteudos/
 │   ├── index.html    índice de publicações
-│   └── colesterol-alto/
-│       └── index.html primeiro artigo publicado
+│   ├── check-up-exames/
+│   ├── colesterol-alto/
+│   ├── hemograma-completo/
+│   └── glicemia-alta/
 ├── assets/
 │   ├── dr-guilherme-profile.jpg
 │   ├── gr-monograma.svg
 │   ├── logo-horizontal.svg
 │   ├── logo-horizontal-transparent.svg
-│   └── og-teleconsulta.png
+│   ├── og-teleconsulta.png
+│   └── og-clinico-geral-online.png
 ├── README.md        resumo técnico já existente
 └── MAPA_DO_SITE.md  este guia
 ```
@@ -65,7 +72,7 @@ landing-page-premium/
 - Se o valor da consulta mudar, atualize todas as ocorrências de `R$ 70`, o valor da oferta no schema e os valores numéricos `70` em `script.js`; assim, o texto, o SEO e as métricas continuam coerentes.
 - Ao trocar a URL da Doctoralia, atualize todos os links com `data-doctoralia-link="true"`. O JavaScript preserva as UTMs e os identificadores de campanha desses links.
 - Mantenha `assets/` ao lado de `index.html`; os caminhos das imagens são relativos.
-- Só altere o ID `GTM-P64PFJRP` se houver outro contêiner GTM configurado.
+- Só altere o ID `G-N3GMLBFNRH` depois de confirmar a propriedade correta no Google Analytics.
 - Depois de publicar, confira desktop e celular, cada CTA da Doctoralia e a página inicial em uma aba anônima.
 
 ## Publicação no Railway

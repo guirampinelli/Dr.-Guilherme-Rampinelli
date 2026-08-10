@@ -13,6 +13,8 @@ educativos em rotas proprias.
 - `script.js`: captura de atribuicao com consentimento, decoracao dos links da Doctoralia e eventos do GA4.
 - `assets/`: monograma, logo horizontal com fundo, logo horizontal transparente e foto usada na pagina.
 - `conteudos/`: pagina de publicacoes e artigos educativos.
+- `consulta-medica-online/`: pagina focada em busca e conversao para consulta com clinico geral online.
+- `sobre/`: perfil profissional e sinais de autoria medica.
 - `privacidade/`: aviso de privacidade e controle da preferencia de cookies.
 - `conteudos.css`: estilos compartilhados da area de conteudos.
 - `robots.txt` e `sitemap.xml`: arquivos de descoberta para mecanismos de busca.
@@ -34,7 +36,7 @@ O Google Analytics 4 usa o ID `G-N3GMLBFNRH` e so e carregado depois do aceite d
 - Conteudos publicados: abra `conteudos/index.html`. O primeiro artigo esta em
   `conteudos/colesterol-alto/index.html`.
 - URLs indexaveis: atualize `sitemap.xml` ao publicar uma nova pagina ou artigo.
-- Imagem de compartilhamento: `assets/og-teleconsulta.png` e as meta tags Open Graph/Twitter
+- Imagem de compartilhamento: `assets/og-clinico-geral-online.png` e as meta tags Open Graph/Twitter
   de cada pagina.
 
 ## Observacao medica

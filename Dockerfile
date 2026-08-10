@@ -5,5 +5,7 @@ COPY index.html styles.css script.js analytics.js conteudos.css robots.txt sitem
 COPY assets/ /usr/share/nginx/html/assets/
 COPY conteudos/ /usr/share/nginx/html/conteudos/
 COPY privacidade/ /usr/share/nginx/html/privacidade/
+COPY consulta-medica-online/ /usr/share/nginx/html/consulta-medica-online/
+COPY sobre/ /usr/share/nginx/html/sobre/
 
 EXPOSE 8080

@@ -702,6 +702,17 @@ p {
   font-weight: 700;
 }
 
+.profile-detail-link {
+  display: inline-flex;
+  margin-top: 22px;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--champagne);
+  text-underline-offset: 4px;
+}
+
 .social-proof {
   color: var(--offwhite);
   background: var(--blue);
@@ -926,6 +937,10 @@ p {
 
 .footer-content-link:hover {
   color: var(--blue);
+}
+
+.footer-content-link + .footer-content-link {
+  margin-left: 16px;
 }
 
 .privacy-links {

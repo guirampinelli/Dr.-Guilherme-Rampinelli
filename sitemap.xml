@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://drrampinelli.com.br/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://drrampinelli.com.br/consulta-medica-online/</loc>
+    <lastmod>2026-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://drrampinelli.com.br/sobre/</loc>
+    <lastmod>2026-08-09</lastmod>
   </url>
   <url>
     <loc>https://drrampinelli.com.br/conteudos/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-09</lastmod>
   </url>
   <url>
     <loc>https://drrampinelli.com.br/conteudos/colesterol-alto/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-09</lastmod>
   </url>
   <url>
     <loc>https://drrampinelli.com.br/conteudos/check-up-exames/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-09</lastmod>
   </url>
   <url>
-    <loc>https://drrampinelli.com.br/privacidade/</loc>
+    <loc>https://drrampinelli.com.br/conteudos/hemograma-completo/</loc>
+    <lastmod>2026-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://drrampinelli.com.br/conteudos/glicemia-alta/</loc>
     <lastmod>2026-08-09</lastmod>
   </url>
 </urlset>
