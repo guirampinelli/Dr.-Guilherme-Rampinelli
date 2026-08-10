@@ -23,7 +23,6 @@
     <meta name="twitter:title" content="Conteúdos de saúde: exames, sintomas e prevenção" />
     <meta name="twitter:description" content="Informação de saúde clara, responsável e escrita por médico clínico geral." />
     <meta name="twitter:image" content="https://drrampinelli.com.br/assets/og-teleconsulta.png?v=20260808" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://www.doctoralia.com.br" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,23 +33,6 @@
     <title>Conteúdos de saúde: exames, sintomas e prevenção | Dr. Guilherme Rampinelli</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../conteudos.css" />
-    <script>
-      window.dataLayer = window.dataLayer || [];
-    </script>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-P64PFJRP");
-    </script>
-    <!-- End Google Tag Manager -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -87,17 +69,6 @@
     </script>
   </head>
   <body class="content-page" data-page-type="health_content_hub" data-page-variant="conteudos_v1">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-P64PFJRP"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <header class="content-site-header" aria-label="Cabeçalho principal">
       <div class="container content-header-inner">
         <a class="content-brand" href="../" aria-label="Página inicial do Dr. Guilherme Rampinelli">
@@ -215,13 +186,20 @@
         <a class="content-brand" href="../" aria-label="Voltar à página inicial">
           <img src="../assets/logo-horizontal-transparent.svg" alt="Dr. Guilherme Rampinelli" />
         </a>
-        <p>
-          Dr. Guilherme Rampinelli • Médico clínico geral • CRM-SP 281096 •
-          <a href="../">Teleconsulta particular</a>.
-        </p>
+        <div>
+          <p>
+            Dr. Guilherme Rampinelli • Médico clínico geral • CRM-SP 281096 •
+            <a href="../">Teleconsulta particular</a>.
+          </p>
+          <div class="privacy-links">
+            <a href="../privacidade/">Privacidade e cookies</a>
+            <button type="button" class="privacy-settings-link" data-privacy-settings>Gerenciar cookies</button>
+          </div>
+        </div>
       </div>
     </footer>
 
+    <script src="../analytics.js" defer></script>
     <script src="../script.js" defer></script>
   </body>
 </html>
