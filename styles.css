@@ -321,6 +321,18 @@ p {
   font-size: 14px;
 }
 
+.hero-note a {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(31, 58, 66, 0.32);
+  text-underline-offset: 3px;
+}
+
+.hero-note a:hover {
+  text-decoration-color: currentColor;
+}
+
 .hero-visual {
   position: relative;
   display: grid;
