@@ -1,6 +1,6 @@
 # Mapa do site — Dr. Guilherme Rampinelli
 
-_Verificado em 9 de agosto de 2026._
+_Verificado em 25 de agosto de 2026._
 
 ## Visão geral
 
@@ -38,7 +38,8 @@ landing-page-premium/
 │   ├── check-up-exames/
 │   ├── colesterol-alto/
 │   ├── hemograma-completo/
-│   └── glicemia-alta/
+│   ├── glicemia-alta/
+│   └── semaglutida-nacional/
 ├── assets/
 │   ├── dr-guilherme-profile.jpg
 │   ├── gr-monograma.svg
