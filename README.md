@@ -33,8 +33,8 @@ O Google Analytics 4 usa o ID `G-N3GMLBFNRH` e so e carregado depois do aceite d
 - Valor da consulta: procure por `R$ 70`.
 - Quantidade de opinioes: procure por `60 opiniões`.
 - Variante de rastreamento: procure por `premium_identity_doctoralia_v1`.
-- Conteudos publicados: abra `conteudos/index.html`. O primeiro artigo esta em
-  `conteudos/colesterol-alto/index.html`.
+- Conteudos publicados: abra `conteudos/index.html`. O artigo mais recente esta em
+  `conteudos/semaglutida-nacional/index.html`.
 - URLs indexaveis: atualize `sitemap.xml` ao publicar uma nova pagina ou artigo.
 - Imagem de compartilhamento: `assets/og-clinico-geral-online.png` e as meta tags Open Graph/Twitter
   de cada pagina.
