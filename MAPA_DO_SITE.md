@@ -88,6 +88,7 @@ A página em produção está respondendo normalmente (`HTTP 200`) e passa pelo 
 | Ambiente | `production` (`f3ceb5be-16e9-4300-a440-ec03e4a7b797`) |
 | Domínio público | `drrampinelli.com.br` |
 | Repositório de origem | GitHub: `guirampinelli/Dr.-Guilherme-Rampinelli` |
+| Integração GitHub | Railway App instalada no repositório; verificada em 25 de agosto de 2026 |
 | Branch publicada | `main` |
 | Método de build | Railpack, sem comando de build, start ou diretório raiz personalizados |
 | Último deploy confirmado | `SUCCESS`, em 8 de agosto de 2026 |
