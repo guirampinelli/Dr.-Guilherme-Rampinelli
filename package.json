@@ -1,0 +1,14 @@
+{
+  "name": "dr-guilherme-rampinelli-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "metrics:report": "node scripts/metrics-report.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

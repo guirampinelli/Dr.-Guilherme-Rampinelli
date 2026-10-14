@@ -18,8 +18,8 @@
       rel="stylesheet"
     />
     <title>Privacidade e cookies | Dr. Guilherme Rampinelli</title>
-    <link rel="stylesheet" href="../styles.css" />
-    <link rel="stylesheet" href="../conteudos.css" />
+    <link rel="stylesheet" href="../styles.css?v=20261014-mensuracao" />
+    <link rel="stylesheet" href="../conteudos.css?v=20261014-mensuracao" />
   </head>
   <body class="content-page" data-page-type="privacy" data-page-variant="privacy_v1">
     <header class="content-site-header" aria-label="Cabeçalho principal">
@@ -50,7 +50,7 @@
 
       <section class="privacy-section">
         <div class="container privacy-copy">
-          <p><strong>Última atualização:</strong> 9 de agosto de 2026.</p>
+          <p><strong>Última atualização:</strong> 14 de outubro de 2026.</p>
           <p>
             Este aviso se aplica ao site drrampinelli.com.br, mantido pelo Dr. Guilherme
             Rampinelli, médico clínico geral, CRM-SP 281096. O site oferece informações educativas
@@ -60,53 +60,98 @@
           <h2>Quais dados são tratados</h2>
           <p>
             O site não possui formulário próprio e não solicita prontuário, sintomas, documentos
-            ou outros dados médicos. Quando você autoriza a análise, o Google Analytics pode
-            registrar informações de navegação, como páginas acessadas, origem aproximada da
-            visita, tipo de dispositivo e interações com os botões de agendamento.
+            ou outros dados médicos. Sem a sua autorização, nenhuma medição é feita. Com a sua
+            autorização, ocorrem duas coisas distintas:
           </p>
+          <ul>
+            <li>
+              <strong>Medição interna do site.</strong> Na página de consulta online, o site conta
+              visitas e cliques nos botões de agendamento. Para não contar a mesma visita duas
+              vezes, o navegador cria um código aleatório que dura só enquanto a aba estiver aberta.
+              O servidor guarda, por até 30 dias, contagens por dia, o botão clicado, versões
+              resumidas e irreversíveis (hashes) do código da aba e do código de cada visita ou
+              clique, usadas apenas para evitar contagem duplicada, e, quando presentes, códigos
+              padronizados da campanha (origem, meio, campanhas de uma lista fechada e números de
+              identificação de campanha, conjunto e anúncio). Essa medição não guarda endereço IP, dados do
+              navegador, identificador de clique da Meta, endereço completo da página, páginas de
+              conteúdo de saúde visitadas ou qualquer texto digitado, e não é enviada à Meta.
+            </li>
+            <li>
+              <strong>Evento enviado à Meta.</strong> Quando você clica para agendar na Doctoralia
+              (links apenas para ver o perfil não geram esse evento),
+              o servidor do site envia à API de Conversões da Meta um evento chamado
+              <em>Contact</em>, com data e hora, um código aleatório do evento, o endereço IP, as
+              informações técnicas do navegador (<em>user agent</em>) e, se você chegou por um
+              anúncio, o identificador de clique fornecido pela Meta (<em>fbclid</em>). A Meta pode
+              usar esses dados para associar o clique a uma conta e a um anúncio.
+            </li>
+          </ul>
           <p>
-            Não enviamos ao Google Analytics o texto de consultas, resultados de exames ou dados
-            informados na Doctoralia. O agendamento ocorre em ambiente externo e segue os termos e
-            o aviso de privacidade da própria Doctoralia.
+            Não são enviados à Meta nome, telefone, e-mail, sintomas, diagnóstico, resultado de
+            exame, o conteúdo preenchido na Doctoralia nem a página de conteúdo de saúde visitada.
+            O site não sabe se a consulta foi de fato agendada: isso ocorre em ambiente externo e
+            segue os termos e o aviso de privacidade da Doctoralia.
           </p>
 
           <h2>Finalidades</h2>
           <ul>
-            <li>entender, de forma agregada, como o site e os conteúdos são encontrados;</li>
-            <li>identificar quais páginas são mais úteis;</li>
-            <li>medir cliques que direcionam à página de agendamento;</li>
-            <li>melhorar clareza, desempenho e navegação.</li>
+            <li>medir, de forma agregada, quantas visitas à página de consulta resultam em clique para agendar;</li>
+            <li>comparar campanhas pelos seus códigos padronizados;</li>
+            <li>informar à Meta que um clique no botão de agendamento ocorreu, para medir o desempenho dos anúncios;</li>
+            <li>melhorar clareza, desempenho e navegação do site.</li>
           </ul>
 
-          <h2>Cookies e sua escolha</h2>
+          <h2>Por quanto tempo</h2>
           <p>
-            A medição do Google Analytics é opcional e só é carregada depois que você seleciona
-            “Aceitar análise”. Se selecionar “Recusar”, nenhuma tag do Google Analytics será
-            carregada durante as próximas visitas neste navegador. A sua preferência fica salva
-            no armazenamento local do navegador para que o site respeite a escolha.
+            Os registros da medição interna (contagens, códigos de campanha e os hashes usados
+            contra duplicidade) ficam guardados por até 30 dias e depois são apagados
+            automaticamente, mesmo sem novas visitas. O código aleatório da aba é apagado quando
+            a aba é fechada.
+            Os dados enviados à Meta seguem os prazos definidos pela própria Meta.
+          </p>
+
+          <h2>Armazenamento no navegador e sua escolha</h2>
+          <p>
+            Este site não usa cookies próprios nem de terceiros. A medição é opcional e só ocorre
+            depois que você seleciona “Aceitar”; as opções “Aceitar” e “Recusar” têm o mesmo peso.
+            Se o navegador enviar o sinal Global Privacy Control (GPC), a medição fica recusada,
+            mesmo que você tenha aceitado antes, e a opção “Aceitar” fica desativada enquanto o
+            sinal estiver ligado. A escolha feita em uma aba vale para as demais abas abertas do site.
           </p>
           <p>
-            Os recursos de publicidade, sinais do Google e personalização de anúncios permanecem
-            desativados nesta implementação. Você pode alterar a escolha abaixo; ao recusar depois
-            de ter aceitado, o site também tenta remover os cookies analíticos próprios existentes.
+            O site usa o armazenamento do navegador para guardar a sua escolha e, somente se você
+            aceitar, os parâmetros da campanha de origem (no armazenamento local) e o código
+            aleatório da aba (no armazenamento de sessão). Se você recusar, nada é enviado para a
+            medição interna nem para a Meta, e o site não cria o código da aba.
+          </p>
+          <p>
+            Não usamos Google Analytics, Meta Pixel ou código da Meta executado no navegador. Você
+            pode alterar sua escolha abaixo; ao recusar depois de ter aceitado, o site apaga do
+            navegador os parâmetros de campanha e o código da aba, e deixa de medir as próximas
+            interações. Registros já feitos no servidor não são apagados no momento da recusa:
+            não contêm nome, contato nem IP e expiram no prazo de até 30 dias indicado acima.
           </p>
           <button type="button" class="button button-secondary" data-privacy-settings>
             Gerenciar preferência de cookies
           </button>
 
-          <h2>Google Analytics e tratamento por terceiros</h2>
+          <h2>Meta e tratamento por terceiros</h2>
           <p>
-            O Google Analytics é fornecido pela Google. O tratamento pode envolver infraestrutura
+            A API de Conversões é fornecida pela Meta. O tratamento pode envolver infraestrutura
             localizada fora do Brasil, conforme os termos e mecanismos de proteção adotados pelo
-            fornecedor. Consulte também
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">a Política de Privacidade do Google</a>
-            e
-            <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">como o Google usa informações de sites que utilizam seus serviços</a>.
+            fornecedor. Consulte também a
+            <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Política de Privacidade da Meta</a>
+            e os
+            <a href="https://www.facebook.com/legal/technology_terms" target="_blank" rel="noopener noreferrer">Termos das Ferramentas da Meta</a>.
+          </p>
+          <p>
+            As fontes tipográficas do site são carregadas do Google Fonts; para isso, o navegador
+            se conecta aos servidores do Google, independentemente da escolha de medição.
           </p>
 
           <h2>Seus direitos e contato</h2>
           <p>
-            Você pode retirar o consentimento analítico a qualquer momento pelo botão desta página.
+            Você pode retirar a autorização de medição a qualquer momento pelo botão desta página.
             Para dúvidas sobre este aviso ou solicitações relacionadas aos seus dados, utilize o
             canal de contato disponível no
             <a href="https://www.doctoralia.com.br/guilherme-rampinelli/medico-clinico-geral/sao-paulo" target="_blank" rel="noopener noreferrer">perfil profissional do Dr. Guilherme Rampinelli na Doctoralia</a>.
@@ -130,7 +175,7 @@
       </div>
     </footer>
 
-    <script src="../analytics.js" defer></script>
-    <script src="../script.js" defer></script>
+    <script src="../analytics.js?v=20261014-mensuracao" defer></script>
+    <script src="../script.js?v=20261014-mensuracao" defer></script>
   </body>
 </html>

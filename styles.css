@@ -132,6 +132,7 @@ p {
 
 .brand > img {
   width: 100%;
+  height: auto;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -1045,6 +1046,25 @@ p {
 .cookie-button-secondary {
   color: var(--offwhite);
   background: transparent;
+}
+
+/* Aceitar e recusar com o mesmo peso visual. */
+.cookie-button-choice {
+  min-width: 112px;
+  border-color: var(--champagne-strong);
+  color: var(--offwhite);
+  background: transparent;
+}
+
+.cookie-button-choice:hover,
+.cookie-button-choice:focus-visible {
+  color: var(--green);
+  background: var(--champagne-strong);
+}
+
+/* O CTA fixo não disputa espaço com o aviso de privacidade. */
+body:has(.cookie-consent) .mobile-cta {
+  display: none !important;
 }
 
 .privacy-section {
