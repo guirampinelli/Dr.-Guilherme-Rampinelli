@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  var measurementId = "G-N3GMLBFNRH";
-  var consentKey = "drg_analytics_consent_v1";
-  var attributionKey = "drguilherme_attribution_v2";
+  var consentKey = "drg_campaign_measurement_consent_v1";
+  var attributionKey = "drguilherme_attribution_v3";
+  var measurementSessionKey = "drg_measurement_session_v1";
 
   function readConsent() {
     try {
@@ -17,69 +17,39 @@
     try {
       window.localStorage.setItem(consentKey, value);
     } catch (error) {
-      // A escolha ainda vale durante a navegação atual quando o armazenamento não está disponível.
+      // A escolha ainda vale durante a navegação atual.
     }
   }
 
-  function dispatch(name) {
-    document.dispatchEvent(new CustomEvent(name));
+  // Global Privacy Control: enquanto o sinal estiver ativo, a medição fica recusada,
+  // mesmo que "Aceitar" tenha sido escolhido antes ou em outra aba.
+  function gpcActive() {
+    try {
+      return window.navigator.globalPrivacyControl === true;
+    } catch (error) {
+      return false;
+    }
   }
 
-  function ensureGoogleQueue() {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag =
-      window.gtag ||
-      function () {
-        window.dataLayer.push(arguments);
-      };
+  function consentState() {
+    return !gpcActive() && readConsent() === "accepted" ? "granted" : "denied";
   }
 
-  function deniedConsent() {
-    return {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "denied"
-    };
+  function clearMeasurementData() {
+    try {
+      window.localStorage.removeItem(attributionKey);
+    } catch (error) {
+      // Nenhuma ação adicional é necessária.
+    }
+    try {
+      window.sessionStorage.removeItem(measurementSessionKey);
+    } catch (error) {
+      // Nenhuma ação adicional é necessária.
+    }
   }
 
-  function loadAnalytics() {
-    if (window.__drAnalyticsReady) return;
-
-    ensureGoogleQueue();
-    window.gtag("consent", "default", deniedConsent());
-    window.gtag("consent", "update", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "granted"
-    });
-    window.gtag("set", "ads_data_redaction", true);
-    window.gtag("js", new Date());
-    window.gtag("config", measurementId, {
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false
-    });
-
-    var googleTag = document.createElement("script");
-    googleTag.async = true;
-    googleTag.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(measurementId);
-    googleTag.dataset.googleAnalytics = measurementId;
-    document.head.appendChild(googleTag);
-
-    window.__drAnalyticsReady = true;
-    dispatch("drg:analytics-ready");
-  }
-
-  function clearAnalyticsCookies() {
-    document.cookie.split(";").forEach(function (cookie) {
-      var name = cookie.split("=")[0].trim();
-      if (name.indexOf("_ga") !== 0) return;
-
-      document.cookie = name + "=; Max-Age=0; path=/; SameSite=Lax";
-      document.cookie =
-        name + "=; Max-Age=0; path=/; domain=." + window.location.hostname + "; SameSite=Lax";
-    });
+  function dispatchChange() {
+    document.dispatchEvent(new CustomEvent("drg:measurement-consent-change"));
   }
 
   function closeBanner() {
@@ -87,37 +57,27 @@
     if (banner) banner.remove();
   }
 
-  function acceptAnalytics() {
+  function acceptMeasurement() {
+    if (gpcActive()) return;
     saveConsent("accepted");
-    window.__drAnalyticsConsent = "granted";
+    window.__drMeasurementConsent = "granted";
     closeBanner();
-    loadAnalytics();
-    dispatch("drg:consent-change");
+    dispatchChange();
   }
 
-  function rejectAnalytics() {
+  function rejectMeasurement() {
     saveConsent("rejected");
-    window.__drAnalyticsConsent = "denied";
-
-    try {
-      window.localStorage.removeItem(attributionKey);
-    } catch (error) {
-      // Nenhuma ação adicional é necessária.
-    }
-
-    if (typeof window.gtag === "function") {
-      window.gtag("consent", "update", deniedConsent());
-    }
-
-    clearAnalyticsCookies();
+    window.__drMeasurementConsent = "denied";
+    clearMeasurementData();
     closeBanner();
-    dispatch("drg:consent-change");
+    dispatchChange();
   }
 
   function showBanner(force) {
     if (!force && readConsent()) return;
     if (document.querySelector("[data-cookie-consent]")) return;
 
+    var gpc = gpcActive();
     var banner = document.createElement("aside");
     banner.className = "cookie-consent";
     banner.dataset.cookieConsent = "true";
@@ -127,22 +87,45 @@
     banner.innerHTML =
       '<div class="cookie-consent-copy">' +
       '<strong id="cookie-consent-title">Privacidade e medição</strong>' +
-      '<p id="cookie-consent-description">Com sua autorização, usamos o Google Analytics para entender visitas e melhorar o conteúdo. A análise é opcional e não usamos esses dados para publicidade personalizada. <a href="/privacidade/">Saiba mais</a>.</p>' +
+      '<p id="cookie-consent-description">Com sua autorização, medimos as visitas à página de consulta e os cliques para agendar (medição interna: contagens, códigos de campanha e códigos resumidos da sessão e do clique para evitar duplicidade, guardados por até 30 dias). Ao clicar para agendar, o servidor também informa à Meta um evento de contato, com endereço IP, dados do navegador e, se você veio de um anúncio, o identificador do clique. Não enviamos sintomas, nome, telefone ou e-mail. Não usamos Google Analytics nem Meta Pixel. <a href="/privacidade/">Saiba mais</a>.</p>' +
+      (gpc
+        ? '<p data-cookie-gpc-notice>Seu navegador está enviando o sinal Global Privacy Control (GPC). Por isso a medição está recusada e não pode ser ativada aqui enquanto o sinal estiver ligado.</p>'
+        : "") +
       "</div>" +
       '<div class="cookie-consent-actions">' +
-      '<button type="button" class="cookie-button cookie-button-secondary" data-cookie-reject>Recusar</button>' +
-      '<button type="button" class="cookie-button cookie-button-primary" data-cookie-accept>Aceitar análise</button>' +
+      '<button type="button" class="cookie-button cookie-button-choice" data-cookie-reject>Recusar</button>' +
+      '<button type="button" class="cookie-button cookie-button-choice" data-cookie-accept' +
+      (gpc ? ' disabled aria-disabled="true" title="Indisponível com Global Privacy Control ativo"' : "") +
+      ">Aceitar</button>" +
       "</div>";
 
     document.body.appendChild(banner);
-    banner.querySelector("[data-cookie-accept]").addEventListener("click", acceptAnalytics);
-    banner.querySelector("[data-cookie-reject]").addEventListener("click", rejectAnalytics);
-    banner.querySelector("[data-cookie-accept]").focus();
+    banner.querySelector("[data-cookie-accept]").addEventListener("click", acceptMeasurement);
+    banner.querySelector("[data-cookie-reject]").addEventListener("click", rejectMeasurement);
   }
 
   var storedConsent = readConsent();
-  window.__drAnalyticsConsent = storedConsent === "accepted" ? "granted" : "denied";
-  window.__drAnalyticsReady = false;
+  if (gpcActive() && storedConsent !== "rejected") {
+    // GPC prevalece sobre aceite anterior.
+    storedConsent = "rejected";
+    saveConsent(storedConsent);
+  }
+  window.__drMeasurementConsent = consentState();
+  if (window.__drMeasurementConsent !== "granted") clearMeasurementData();
+
+  // Escolha feita em outra aba: sincroniza o estado desta aba e, ao revogar,
+  // apaga a sessão de medição e a atribuição.
+  if (typeof window.addEventListener === "function") {
+    window.addEventListener("storage", function (event) {
+      if (event && event.key !== consentKey && event.key !== null) return;
+      if (readConsent()) closeBanner();
+      var next = consentState();
+      if (next === window.__drMeasurementConsent) return;
+      window.__drMeasurementConsent = next;
+      if (next !== "granted") clearMeasurementData();
+      dispatchChange();
+    });
+  }
 
   document.addEventListener("click", function (event) {
     var settingsButton =
@@ -153,9 +136,5 @@
     showBanner(true);
   });
 
-  if (storedConsent === "accepted") {
-    loadAnalytics();
-  } else if (!storedConsent) {
-    showBanner(false);
-  }
+  if (!storedConsent) showBanner(false);
 })();

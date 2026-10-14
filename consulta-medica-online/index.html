@@ -34,8 +34,8 @@
       rel="stylesheet"
     />
     <title>Consulta médica online com clínico geral para adultos</title>
-    <link rel="stylesheet" href="../styles.css" />
-    <link rel="stylesheet" href="../conteudos.css" />
+    <link rel="stylesheet" href="../styles.css?v=20261014-contact" />
+    <link rel="stylesheet" href="../conteudos.css?v=20261014-contact" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -46,7 +46,7 @@
             "url": "https://drrampinelli.com.br/consulta-medica-online/",
             "name": "Consulta médica online com clínico geral para adultos",
             "description": "Entenda quando a teleconsulta com clínico geral pode ajudar, como funciona o atendimento e como agendar.",
-            "dateModified": "2026-08-23",
+            "dateModified": "2026-10-14",
             "inLanguage": "pt-BR",
             "isPartOf": { "@id": "https://drrampinelli.com.br/#website" },
             "about": { "@id": "https://drrampinelli.com.br/consulta-medica-online/#service" },
@@ -132,7 +132,7 @@
       }
     </script>
   </head>
-  <body class="content-page" data-page-type="medical_service" data-page-variant="clinico_geral_online_v2">
+  <body class="content-page" data-page-type="medical_service" data-page-variant="clinico_geral_online_v3" data-metrics-page="consulta_online">
     <header class="content-site-header" aria-label="Cabeçalho principal">
       <div class="container content-header-inner">
         <a class="content-brand" href="../" aria-label="Página inicial do Dr. Guilherme Rampinelli">
@@ -158,18 +158,23 @@
     </header>
 
     <main>
-      <section class="article-hero" aria-labelledby="service-title">
+      <section class="article-hero" aria-labelledby="service-title" data-sticky-cta-anchor>
         <div class="container service-hero-grid">
           <div class="article-hero-inner">
             <nav class="breadcrumb" aria-label="Caminho de navegação">
               <a href="../">Início</a><span>›</span><span>Consulta médica online</span>
             </nav>
             <p class="article-kicker" style="margin-top: 30px">Clínico geral online</p>
-            <h1 id="service-title">Consulta médica online com clínico geral para adultos.</h1>
+            <h1 id="service-title">Consulta médica online para adultos</h1>
+            <p class="service-doctor">Com Dr. Guilherme Rampinelli, médico clínico geral.</p>
             <p class="article-intro">
-              Converse por vídeo com o Dr. Guilherme Rampinelli, médico clínico geral, para avaliar
-              sintomas, revisar exames e organizar próximos passos com segurança.
+              Atendimento individual por vídeo para conversar sobre queixas comuns, revisar exames e
+              organizar os próximos passos.
             </p>
+            <div class="service-offer">
+              <span class="service-offer-price">Consulta particular: <strong>R$ 70</strong></span>
+              <span class="service-offer-crm">CRM-SP 281096</span>
+            </div>
             <div class="service-hero-actions">
               <a
                 class="button button-primary"
@@ -179,11 +184,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Ver horários na Doctoralia
+                Ver horários e agendar
               </a>
               <a class="button button-ghost" href="#como-funciona">Como funciona</a>
             </div>
-            <p class="article-meta">Consulta particular: R$ 70 <span>•</span> CRM-SP 281096 <span>•</span> Adultos</p>
+            <p class="service-cta-note">Agendamento e pagamento pela Doctoralia.</p>
           </div>
           <aside class="service-summary" aria-label="Resumo da consulta">
             <strong>Atendimento individual</strong>
@@ -317,7 +322,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            Agendar consulta online
+            Ver horários e agendar
           </a>
         </div>
       </section>
@@ -340,7 +345,20 @@
       </div>
     </footer>
 
-    <script src="../analytics.js" defer></script>
-    <script src="../script.js" defer></script>
+    <div class="mobile-cta service-mobile-cta" role="region" aria-label="Agendamento rápido">
+      <a
+        class="button button-primary"
+        href="https://www.doctoralia.com.br/guilherme-rampinelli/medico-clinico-geral/sao-paulo?utm_source=site&amp;utm_medium=service&amp;utm_campaign=clinico_geral_online&amp;utm_content=service_sticky"
+        data-doctoralia-link="true"
+        data-cta-location="service_sticky"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver horários e agendar <span class="mobile-cta-price">R$ 70</span>
+      </a>
+    </div>
+
+    <script src="../analytics.js?v=20261014-contact" defer></script>
+    <script src="../script.js?v=20261014-contact" defer></script>
   </body>
 </html>
