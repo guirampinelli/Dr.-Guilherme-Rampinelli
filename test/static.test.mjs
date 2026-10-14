@@ -125,7 +125,7 @@ test('HTML usa a versão nova de CSS/JS (sem cache antigo)', () => {
     const html = readFileSync(path.join(SITE_ROOT, page), 'utf8');
     const refs = [...html.matchAll(/(?:styles|conteudos|analytics|script)\.(?:css|js)\?v=([\w-]+)/g)].map((match) => match[1]);
     assert.ok(refs.length >= 3, page);
-    assert.ok(refs.every((version) => version === '20261014-mensuracao'), `${page}: ${refs.join(',')}`);
+    assert.ok(refs.every((version) => version === '20261014-contact'), `${page}: ${refs.join(',')}`);
   }
 });
 
