@@ -171,13 +171,30 @@ test('sanitizeAttribution só aceita códigos conhecidos', () => {
 });
 
 test('allowlist de campanhas é fechada', () => {
-  for (const code of ['drg_ig_lpv_202610', 'drg_contact_sp_rj_202608', 'drg_teleconsulta_sp_rj_2026_08']) {
+  for (const code of ['drg_ig_lpv_202610', 'drg_ig_contact_202610', 'drg_contact_sp_rj_202608', 'drg_teleconsulta_sp_rj_2026_08']) {
     assert.equal(sanitizeAttribution({ utm_campaign: code }).campaign, code);
   }
   for (const code of ['drg_maria_silva', 'drg_diabetes', 'drg_ig_lpv_202611', 'DRG_IG_LPV_202610', 'drg_ig_lpv_202610 ']) {
     assert.equal(sanitizeAttribution({ utm_campaign: code }).campaign, 'other', code);
   }
-  assert.equal(CAMPAIGN_CODES.size, 3);
+  assert.equal(CAMPAIGN_CODES.size, 4);
+});
+
+test('Contact reconhece apenas sua tripla verificada sem misturar IDs de LPV', () => {
+  const input = {
+    utm_source: 'instagram', utm_medium: 'paid_social', utm_campaign: 'drg_ig_contact_202610',
+    campaign_id: '120249611849970644', adset_id: '120249611850000644', ad_id: '120249611849990644'
+  };
+  assert.equal(sanitizeAttribution(input).campaign_id, input.campaign_id);
+  for (const change of [
+    { ad_id: '120249610857760644' }, { utm_campaign: 'drg_ig_lpv_202610' },
+    { utm_source: 'meta' }, { utm_medium: 'organic' }
+  ]) {
+    const result = sanitizeAttribution({ ...input, ...change });
+    assert.equal(result.campaign_id, 'other');
+    assert.equal(result.adset_id, 'other');
+    assert.equal(result.ad_id, 'other');
+  }
 });
 
 // fs com falhas injetáveis: cada chave em `fail` lança EIO na próxima chamada correspondente.

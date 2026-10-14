@@ -396,6 +396,11 @@ test('allowlist de campanhas fechada também no navegador', () => {
   }
   const ok = browser({ consent: 'accepted', search: '?utm_campaign=drg_teleconsulta_sp_rj_2026_08' });
   assert.deepEqual(ok.fetches[0].body.attribution, { utm_campaign: 'drg_teleconsulta_sp_rj_2026_08' });
+  const contact = browser({ consent: 'accepted', search: '?utm_campaign=drg_ig_contact_202610&utm_id=120249611849970644&utm_term=120249611850000644&utm_content=120249611849990644' });
+  assert.deepEqual(contact.fetches[0].body.attribution, {
+    utm_campaign: 'drg_ig_contact_202610', campaign_id: '120249611849970644',
+    adset_id: '120249611850000644', ad_id: '120249611849990644'
+  });
 });
 
 test('payload Contact existente permanece igual', () => {

@@ -20,7 +20,7 @@
   var measurementSessionKey = "drg_measurement_session_v1";
   var scheduleCtas = ["service_header", "service_hero", "service_final", "service_sticky"];
   // Allowlist fechada (igual à do servidor): outros valores de utm_campaign não são enviados.
-  var campaignCodesAllowed = ["drg_ig_lpv_202610", "drg_contact_sp_rj_202608", "drg_teleconsulta_sp_rj_2026_08"];
+  var campaignCodesAllowed = ["drg_ig_lpv_202610", "drg_ig_contact_202610", "drg_contact_sp_rj_202608", "drg_teleconsulta_sp_rj_2026_08"];
   var metaIdPattern = /^\d{15,20}$/;
   var uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
   var memorySessionId = "";

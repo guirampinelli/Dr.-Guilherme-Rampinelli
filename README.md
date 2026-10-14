@@ -43,9 +43,9 @@ Somente após consentimento ("Aceitar" no aviso de privacidade):
    sessão/evento (deduplicação, até 30 dias), contagens por dia de São Paulo, CTA e
    atribuição em códigos de allowlist **fechada**:
    `utm_source` ∈ {meta, facebook, instagram}, `utm_medium` = paid_social, `utm_campaign`
-   ∈ {`drg_ig_lpv_202610`, `drg_contact_sp_rj_202608`, `drg_teleconsulta_sp_rj_2026_08`}
+   ∈ {`drg_ig_lpv_202610`, `drg_ig_contact_202610`, `drg_contact_sp_rj_202608`, `drg_teleconsulta_sp_rj_2026_08`}
    (qualquer outra campanha, mesmo com prefixo `drg_`, vira `other`; o navegador nem envia)
-   e a tripla de IDs verificada do anúncio novo; combinações desconhecidas viram `other`. No navegador, os parâmetros de IDs numéricos da Meta (15–20 dígitos) são mapeados: campanha = `campaign_id`/`utm_id`
+   e as triplas de IDs verificadas dos anúncios LPV e Contact; combinações desconhecidas viram `other`. No navegador, os parâmetros de IDs numéricos da Meta (15–20 dígitos) são mapeados: campanha = `campaign_id`/`utm_id`
    (`{{campaign.id}}`), conjunto = `adset_id`/`utm_term` (`{{adset.id}}`), anúncio =
    `ad_id`/`utm_content` (`{{ad.id}}`). Não guarda IP, user agent, fbclid, URL, páginas de
    artigos nem texto livre.
